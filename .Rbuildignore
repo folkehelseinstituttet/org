@@ -1,0 +1,7 @@
+.travis.yml
+project.Rproj
+^.*\.Rproj$
+^\.Rproj\.user$
+LICENSE
+deploy.sh
+make.sh
