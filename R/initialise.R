@@ -147,6 +147,7 @@ InitialiseProject <- function(HOME=NULL,
     if(!is.null(PROJ$SHARED)) for(f in list.files(PROJ$SHARED)){
       if(stringr::str_detect(f,"[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]")) if(f==lubridate::today()) next # don't want to delete today's folder
       f2 <- file.path(PROJ$SHARED,f)
+      if(file.exists(f2) && !dir.exists(f2)) next # dont delete files
       if(length(list.files(f2))==0){
         unlink(f2, recursive = T)
       }
