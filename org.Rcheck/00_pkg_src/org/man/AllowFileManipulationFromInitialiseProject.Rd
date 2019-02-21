@@ -2,12 +2,12 @@
 % Please edit documentation in R/initialise.R
 \name{AllowFileManipulationFromInitialiseProject}
 \alias{AllowFileManipulationFromInitialiseProject}
-\title{Allows for InitialiseProject to manipulate files
-on your system}
+\title{Allows for InitialiseProject to create folders and
+delete empty folders on your computer}
 \usage{
 AllowFileManipulationFromInitialiseProject()
 }
 \description{
-Allows for InitialiseProject to manipulate files
-on your system
+Allows for InitialiseProject to create folders and
+delete empty folders on your computer
 }
