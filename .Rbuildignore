@@ -6,3 +6,4 @@ project.Rproj
 LICENSE
 deploy.sh
 make.sh
+cran-comments.md

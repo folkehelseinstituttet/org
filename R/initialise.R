@@ -28,6 +28,9 @@ AllowFileManipulationFromInitialiseProject <- function() {
 #' It then saves its results (i.e. folder locations) in `org::PROJ`,
 #' which you will use in all of your subsequent code.
 #'
+#' You need to run 'org::AllowFileManipulationFromInitialiseProject()'
+#' for this function to create today's folder (org::PROJ$SHARED_TODAY).
+#'
 #' For more details see the help vignette:
 #' \code{vignette("intro", package = "org")}
 #' @param HOME The folder containing 'Run.R' and 'code/'
