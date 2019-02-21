@@ -14,10 +14,6 @@ Maintainer: 'Richard White <w@rwhite.no>'
 
 New submission
 
-Availability using Additional_repositories specification:
-  ?   ?   https://raubreywhite.github.io/drat/
-
-
 ## Downstream dependencies
 
 none
