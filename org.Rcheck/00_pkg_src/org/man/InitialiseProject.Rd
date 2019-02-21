@@ -7,12 +7,33 @@
 InitialiseProject(HOME = NULL, SHARED = NULL, ...)
 }
 \arguments{
-\item{HOME}{a}
+\item{HOME}{The folder containing 'Run.R' and 'code/'}
 
-\item{SHARED}{a}
+\item{SHARED}{A folder inside `SHARED` with today's date will be created and it will be accessible via `org::PROJ$SHARED_TODAY` (this is where you will store all of your results)}
 
-\item{...}{a}
+\item{...}{Other folders that you would like to reference}
 }
 \description{
-Initialises project
+`org::InitialiseProject` takes in 2+ arguments.
+It then saves its results (i.e. folder locations) in `org::PROJ`,
+which you will use in all of your subsequent code.
+}
+\details{
+You need to run 'org::AllowFileManipulationFromInitialiseProject()'
+for this function to create today's folder (org::PROJ$SHARED_TODAY).
+
+For more details see the help vignette:
+\code{vignette("intro", package = "org")}
+}
+\examples{
+\dontrun{
+org::AllowFileManipulationFromInitialiseProject()
+org::InitialiseProject(
+  HOME = "/git/analyses/2019/analysis3/",
+  SHARED = "/dropbox/analyses_results/2019/analysis3/"
+  RAW = "/data/analyses/2019/analysis3/"
+)
+org::PROJ$SHARED_TODAY
+org::PROJ$RAW
+}
 }

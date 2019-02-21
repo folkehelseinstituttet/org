@@ -1,6 +1,6 @@
 AllowFileManipulationFromInitialiseProject
-                        Allows for InitialiseProject to manipulate
-                        files on your system
-CONFIG                  CONFIG
+                        Allows for InitialiseProject to create folders
+                        and delete empty folders on your computer
+CONFIG                  Config
 InitialiseProject       Initialises project
-PROJ                    PROJ
+PROJ                    Folders to be used/referenced

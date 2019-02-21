@@ -18,7 +18,7 @@ Type 'q()' to quit R.
 > library(testthat)
 > library(org)
 PACKAGE: org
-Version 2019.02.21 at 08:09
+Version 2019.02.21 at 08:48
 Developed by Richard White, Norwegian Institute of Public Health
 > 
 > test_check("org")
@@ -27,4 +27,4 @@ OK: 3 SKIPPED: 0 FAILED: 0
 > 
 > proc.time()
    user  system elapsed 
-  0.672   0.036   0.702 
+  0.600   0.048   0.642 

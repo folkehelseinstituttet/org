@@ -74,10 +74,10 @@ No file Rd2.aux.
 (/home/travis/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/home/travis/texlive/texmf-dist/tex/latex/base/utf8.def) [1{/home/travis/texli
 ve/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(/home/travis/texlive/texmf-dist/tex/latex/base/utf8.def)
+(/home/travis/texlive/texmf-dist/tex/latex/base/utf8.def) [2]
 (/home/travis/texlive/texmf-dist/tex/latex/base/utf8.def)
 No file Rd2.ind.
-[2] (./Rd2.aux)
+[3] (./Rd2.aux)
 
 Package rerunfilecheck Warning: File `Rd2.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -91,7 +91,7 @@ f-dist/fonts/type1/urw/times/utmb8a.pfb></home/travis/texlive/texmf-dist/fonts/
 type1/urw/times/utmr8a.pfb></home/travis/texlive/texmf-dist/fonts/type1/urw/tim
 es/utmr8a.pfb></home/travis/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pf
 b>
-Output written on Rd2.pdf (2 pages, 70417 bytes).
+Output written on Rd2.pdf (3 pages, 79817 bytes).
 Transcript written on Rd2.log.
 This is makeindex, version 2.15 [TeX Live 2017] (kpathsea + Thai support).
 Scanning input file Rd2.idx....done (6 entries accepted, 0 rejected).
@@ -173,9 +173,8 @@ Writing index file Rd2.idx
 (/home/travis/texlive/texmf-dist/tex/latex/base/utf8.def) [1{/home/travis/texli
 ve/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 (/home/travis/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/home/travis/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/home/travis/texlive/texmf-dist/tex/latex/base/utf8.def) [2] (./Rd2.ind
-[3]
+(/home/travis/texlive/texmf-dist/tex/latex/base/utf8.def) [2]
+(/home/travis/texlive/texmf-dist/tex/latex/base/utf8.def) (./Rd2.ind [3]
 Overfull \hbox (23.3567pt too wide) in paragraph at lines 9--11
 []\T1/zi4/m/n/10 AllowFileManipulationFromInitialiseProject\T1/ptm/m/n/10 , 
 [4]) (./Rd2.aux)
@@ -194,7 +193,7 @@ helvetic/uhvr8a.pfb></home/travis/texlive/texmf-dist/fonts/type1/urw/times/utmb
 8a.pfb></home/travis/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home
 /travis/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/travis/texli
 ve/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (4 pages, 81578 bytes).
+Output written on Rd2.pdf (4 pages, 88411 bytes).
 Transcript written on Rd2.log.
 This is makeindex, version 2.15 [TeX Live 2017] (kpathsea + Thai support).
 Scanning input file Rd2.idx....done (6 entries accepted, 0 rejected).
@@ -276,9 +275,8 @@ Writing index file Rd2.idx
 (/home/travis/texlive/texmf-dist/tex/latex/base/utf8.def) [1{/home/travis/texli
 ve/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 (/home/travis/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/home/travis/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/home/travis/texlive/texmf-dist/tex/latex/base/utf8.def) [2] (./Rd2.ind
-[3]
+(/home/travis/texlive/texmf-dist/tex/latex/base/utf8.def) [2]
+(/home/travis/texlive/texmf-dist/tex/latex/base/utf8.def) (./Rd2.ind [3]
 Overfull \hbox (23.3567pt too wide) in paragraph at lines 9--11
 []\T1/zi4/m/n/10 AllowFileManipulationFromInitialiseProject\T1/ptm/m/n/10 , 
 [4]) (./Rd2.aux) )
@@ -291,8 +289,8 @@ helvetic/uhvr8a.pfb></home/travis/texlive/texmf-dist/fonts/type1/urw/times/utmb
 8a.pfb></home/travis/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home
 /travis/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/travis/texli
 ve/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (4 pages, 82217 bytes).
+Output written on Rd2.pdf (4 pages, 89055 bytes).
 Transcript written on Rd2.log.
 Saving output to ‘org-manual.pdf’ ...
 Done
-You may want to clean up by 'rm -Rf /tmp/Rtmp2kqcXo/Rd2pdf626b1e3c61ca'
+You may want to clean up by 'rm -Rf /tmp/Rtmp9VCjdI/Rd2pdf618b43c03bcc'

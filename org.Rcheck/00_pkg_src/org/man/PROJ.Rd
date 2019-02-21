@@ -3,12 +3,12 @@
 \docType{data}
 \name{PROJ}
 \alias{PROJ}
-\title{PROJ}
+\title{Folders to be used/referenced}
 \format{An object of class \code{environment} of length 0.}
 \usage{
 PROJ
 }
 \description{
-PROJ
+Folders to be used/referenced
 }
 \keyword{datasets}
