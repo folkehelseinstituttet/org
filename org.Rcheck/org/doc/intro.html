@@ -252,14 +252,14 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 git
   +-- analyses
              +-- 2018
-             |      +-- analysis1
+             |      +-- analysis1 &lt;- org::PROJ$HOME
              |      |           +-- Run.R
              |      |           +-- code
              |      |                  +-- CleanData.R
              |      |                  +-- Descriptives.R
              |      |                  +-- Analysis1.R
              |      |                  +-- Graphs1.R
-             |      +-- analysis2
+             |      +-- analysis2 &lt;- org::PROJ$HOME
              |                  +-- Run.R
              |                  +-- code
              |                         +-- CleanData.R
@@ -267,7 +267,7 @@ git
              |                         +-- Analysis1.R
              |                         +-- Graphs1.R
              +-- 2019
-                    +-- analysis3
+                    +-- analysis3 &lt;- org::PROJ$HOME
                                 +-- Run.R
                                 +-- code
                                        +-- CleanData.R
@@ -279,56 +279,56 @@ git
 dropbox
   +-- analyses_results
              +-- 2018
-             |      +-- analysis1
-             |      |           +-- 2018-03-12
+             |      +-- analysis1 &lt;- org::PROJ$SHARED
+             |      |           +-- 2018-03-12 &lt;- org::PROJ$SHARED_TODAY
              |      |           |            +-- table1.xlsx
              |      |           |            +-- figure1.png
-             |      |           +-- 2018-03-15
+             |      |           +-- 2018-03-15 &lt;- org::PROJ$SHARED_TODAY
              |      |           |            +-- table1.xlsx
              |      |           |            +-- figure1.png
-             |      |           +-- 2018-03-18
+             |      |           +-- 2018-03-18 &lt;- org::PROJ$SHARED_TODAY
              |      |           |            +-- table1.xlsx
              |      |           |            +-- figure1.png
              |      |           |            +-- figure2.png
-             |      |           +-- 2018-06-18
+             |      |           +-- 2018-06-18 &lt;- org::PROJ$SHARED_TODAY
              |      |           |            +-- table1.xlsx
              |      |           |            +-- table2.xlsx
              |      |           |            +-- figure1.png
              |      |           |            +-- figure2.png
-             |      +-- analysis2
-             |      |           +-- 2018-06-09
+             |      +-- analysis2 &lt;- org::PROJ$SHARED
+             |      |           +-- 2018-06-09 &lt;- org::PROJ$SHARED_TODAY
              |      |           |            +-- table1.xlsx
              |      |           |            +-- figure1.png
-             |      |           +-- 2018-12-15
+             |      |           +-- 2018-12-15 &lt;- org::PROJ$SHARED_TODAY
              |      |           |            +-- table1.xlsx
              |      |           |            +-- figure1.png
-             |      |           +-- 2019-01-18
+             |      |           +-- 2019-01-18 &lt;- org::PROJ$SHARED_TODAY
              |      |           |            +-- table1.xlsx
              |      |           |            +-- figure1.png
              |      |           |            +-- figure2.png
              +-- 2019
-                    +-- analysis3
-                    |           +-- 2019-06-09
+                    +-- analysis3 &lt;- org::PROJ$SHARED
+                    |           +-- 2019-06-09 &lt;- org::PROJ$SHARED_TODAY
                     |           |            +-- table1.xlsx
                     |           |            +-- figure1.png
-                    |           +-- 2019-12-15
+                    |           +-- 2019-12-15 &lt;- org::PROJ$SHARED_TODAY
                     |           |            +-- table1.xlsx
                     |           |            +-- figure1.png
-                    |           +-- 2020-01-18
+                    |           +-- 2020-01-18 &lt;- org::PROJ$SHARED_TODAY
                     |           |            +-- table1.xlsx
                     |           |            +-- figure1.png
                     |           |            +-- figure2.png
 
-# code goes here:
+# data goes here:
 data
   +-- analyses
              +-- 2018
-             |      +-- analysis1
+             |      +-- analysis1 &lt;- org::PROJ$RAW
              |      |           +-- data.xlsx
-             |      +-- analysis2
+             |      +-- analysis2 &lt;- org::PROJ$RAW
              |      |           +-- data.xlsx
              +-- 2019
-                    +-- analysis3
+                    +-- analysis3 &lt;- org::PROJ$RAW
                                 +-- data.xlsx
 </code></pre>
 </div>

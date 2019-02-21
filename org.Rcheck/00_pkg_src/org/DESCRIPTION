@@ -13,6 +13,6 @@ Additional_repositories: https://raubreywhite.github.io/drat/
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2019-02-21 07:42:54 UTC; travis
+Packaged: 2019-02-21 08:21:17 UTC; travis
 Author: Richard White [aut, cre]
 Maintainer: Richard White <w@rwhite.no>
