@@ -53,14 +53,14 @@ Code should be stored in Github. Data should be stored locally in an encrypted v
 git
   +-- analyses
              +-- 2018
-             |      +-- analysis1
+             |      +-- analysis1 <- org::PROJ$HOME
              |      |           +-- Run.R
              |      |           +-- code
              |      |                  +-- CleanData.R
              |      |                  +-- Descriptives.R
              |      |                  +-- Analysis1.R
              |      |                  +-- Graphs1.R
-             |      +-- analysis2
+             |      +-- analysis2 <- org::PROJ$HOME
              |                  +-- Run.R
              |                  +-- code
              |                         +-- CleanData.R
@@ -68,7 +68,7 @@ git
              |                         +-- Analysis1.R
              |                         +-- Graphs1.R
              +-- 2019
-                    +-- analysis3
+                    +-- analysis3 <- org::PROJ$HOME
                                 +-- Run.R
                                 +-- code
                                        +-- CleanData.R
@@ -80,42 +80,42 @@ git
 dropbox
   +-- analyses_results
              +-- 2018
-             |      +-- analysis1
-             |      |           +-- 2018-03-12
+             |      +-- analysis1 <- org::PROJ$SHARED
+             |      |           +-- 2018-03-12 <- org::PROJ$SHARED_TODAY
              |      |           |            +-- table1.xlsx
              |      |           |            +-- figure1.png
-             |      |           +-- 2018-03-15
+             |      |           +-- 2018-03-15 <- org::PROJ$SHARED_TODAY
              |      |           |            +-- table1.xlsx
              |      |           |            +-- figure1.png
-             |      |           +-- 2018-03-18
+             |      |           +-- 2018-03-18 <- org::PROJ$SHARED_TODAY
              |      |           |            +-- table1.xlsx
              |      |           |            +-- figure1.png
              |      |           |            +-- figure2.png
-             |      |           +-- 2018-06-18
+             |      |           +-- 2018-06-18 <- org::PROJ$SHARED_TODAY
              |      |           |            +-- table1.xlsx
              |      |           |            +-- table2.xlsx
              |      |           |            +-- figure1.png
              |      |           |            +-- figure2.png
-             |      +-- analysis2
-             |      |           +-- 2018-06-09
+             |      +-- analysis2 <- org::PROJ$SHARED
+             |      |           +-- 2018-06-09 <- org::PROJ$SHARED_TODAY
              |      |           |            +-- table1.xlsx
              |      |           |            +-- figure1.png
-             |      |           +-- 2018-12-15
+             |      |           +-- 2018-12-15 <- org::PROJ$SHARED_TODAY
              |      |           |            +-- table1.xlsx
              |      |           |            +-- figure1.png
-             |      |           +-- 2019-01-18
+             |      |           +-- 2019-01-18 <- org::PROJ$SHARED_TODAY
              |      |           |            +-- table1.xlsx
              |      |           |            +-- figure1.png
              |      |           |            +-- figure2.png
              +-- 2019
-                    +-- analysis3
-                    |           +-- 2019-06-09
+                    +-- analysis3 <- org::PROJ$SHARED
+                    |           +-- 2019-06-09 <- org::PROJ$SHARED_TODAY
                     |           |            +-- table1.xlsx
                     |           |            +-- figure1.png
-                    |           +-- 2019-12-15
+                    |           +-- 2019-12-15 <- org::PROJ$SHARED_TODAY
                     |           |            +-- table1.xlsx
                     |           |            +-- figure1.png
-                    |           +-- 2020-01-18
+                    |           +-- 2020-01-18 <- org::PROJ$SHARED_TODAY
                     |           |            +-- table1.xlsx
                     |           |            +-- figure1.png
                     |           |            +-- figure2.png
@@ -124,12 +124,12 @@ dropbox
 data
   +-- analyses
              +-- 2018
-             |      +-- analysis1
+             |      +-- analysis1 <- org::PROJ$RAW
              |      |           +-- data.xlsx
-             |      +-- analysis2
+             |      +-- analysis2 <- org::PROJ$RAW
              |      |           +-- data.xlsx
              +-- 2019
-                    +-- analysis3
+                    +-- analysis3 <- org::PROJ$RAW
                                 +-- data.xlsx
 
 ```
