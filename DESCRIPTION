@@ -13,6 +13,5 @@ Imports:
 Suggests: testthat,
     knitr,
     rmarkdown
-Additional_repositories: https://raubreywhite.github.io/drat/
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
