@@ -1,6 +1,6 @@
 Package: org
 Title: R Functions for Organising Projects
-Version: 2019.02.21
+Version: 2019.2.21
 Authors@R: person("Richard", "White", email = "w@rwhite.no", role = c("aut", "cre"))
 Description: R functions for organising projects.
 Depends: R (>= 3.3.0)
