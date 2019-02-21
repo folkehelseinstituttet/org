@@ -37,7 +37,15 @@ AllowFileManipulationFromInitialiseProject <- function() {
 #' @param SHARED A folder inside `SHARED` with today's date will be created and it will be accessible via `org::PROJ$SHARED_TODAY` (this is where you will store all of your results)
 #' @param ... Other folders that you would like to reference
 #' @return org::PROJ
-#' @export InitialiseProject
+#' @examples \dontrun{
+#' org::AllowFileManipulationFromInitialiseProject()
+#' org::InitialiseProject(
+#'   HOME = "/git/analyses/2019/analysis3/",
+#'   SHARED = "/dropbox/analyses_results/2019/analysis3/"
+#'   RAW = "/data/analyses/2019/analysis3/"
+#' )
+#' }
+#' @export
 InitialiseProject <- function(HOME = NULL,
                               SHARED = NULL,
                               ...) {
