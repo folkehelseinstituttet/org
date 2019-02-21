@@ -7,12 +7,21 @@
 InitialiseProject(HOME = NULL, SHARED = NULL, ...)
 }
 \arguments{
-\item{HOME}{a}
+\item{HOME}{The folder containing 'Run.R' and 'code/'}
 
-\item{SHARED}{a}
+\item{SHARED}{A folder inside `SHARED` with today's date will be created and it will be accessible via `org::PROJ$SHARED_TODAY` (this is where you will store all of your results)}
 
-\item{...}{a}
+\item{...}{Other folders that you would like to reference}
+}
+\value{
+org::PROJ
 }
 \description{
-Initialises project
+`org::InitialiseProject` takes in 2+ arguments.
+It then saves its results (i.e. folder locations) in `org::PROJ`,
+which you will use in all of your subsequent code.
+}
+\details{
+For more details see the help vignette:
+\code{vignette("intro", package = "org")}
 }

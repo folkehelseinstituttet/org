@@ -15,17 +15,25 @@ SelectFolderThatExists <- function(folders, name) {
   return(retval)
 }
 
-#' Allows for InitialiseProject to manipulate files
-#' on your system
+#' Allows for InitialiseProject to create folders and
+#' delete empty folders on your computer
 #' @export AllowFileManipulationFromInitialiseProject
 AllowFileManipulationFromInitialiseProject <- function() {
   CONFIG$ALLOW_FILE_MANIPULATION_FROM_INITIALISE_PROJECT <- TRUE
 }
 
 #' Initialises project
-#' @param HOME a
-#' @param SHARED a
-#' @param ... a
+#'
+#' `org::InitialiseProject` takes in 2+ arguments.
+#' It then saves its results (i.e. folder locations) in `org::PROJ`,
+#' which you will use in all of your subsequent code.
+#'
+#' For more details see the help vignette:
+#' \code{vignette("intro", package = "org")}
+#' @param HOME The folder containing 'Run.R' and 'code/'
+#' @param SHARED A folder inside `SHARED` with today's date will be created and it will be accessible via `org::PROJ$SHARED_TODAY` (this is where you will store all of your results)
+#' @param ... Other folders that you would like to reference
+#' @return org::PROJ
 #' @export InitialiseProject
 InitialiseProject <- function(HOME = NULL,
                               SHARED = NULL,
