@@ -7,12 +7,13 @@ Depends: R (>= 3.5.0)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Imports:
-  stringr,
-  lubridate
-Suggests: testthat, rms,
-    knitr,
-    rmarkdown
+Imports: stringr, lubridate
+Suggests: testthat, rms, knitr, rmarkdown
 Additional_repositories: https://raubreywhite.github.io/drat/
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
+NeedsCompilation: no
+Packaged: 2019-02-21 07:42:54 UTC; travis
+Author: Richard White [aut, cre]
+Maintainer: Richard White <w@rwhite.no>
+Built: R 3.5.2; ; 2019-02-21 07:42:55 UTC; unix

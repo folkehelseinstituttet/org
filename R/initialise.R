@@ -18,7 +18,7 @@ SelectFolderThatExists <- function(folders, name){
 #' Allows for InitialiseProject to manipulate files
 #' on your system
 #' @export AllowFileManipulationFromInitialiseProject
-AllowFileManipulationFromInitialiseProject <- function(){
+AllowFileManipulationFromInitialiseProject <- function() {
   CONFIG$ALLOW_FILE_MANIPULATION_FROM_INITIALISE_PROJECT <- TRUE
 }
 
@@ -27,10 +27,9 @@ AllowFileManipulationFromInitialiseProject <- function(){
 #' @param SHARED a
 #' @param ... a
 #' @export InitialiseProject
-InitialiseProject <- function(HOME=NULL,
-                              SHARED=NULL,
-                              ...){
-
+InitialiseProject <- function(HOME = NULL,
+                              SHARED = NULL,
+                              ...) {
   PROJ$HOME <- HOME
   PROJ$SHARED <- SHARED
 
@@ -48,33 +47,35 @@ InitialiseProject <- function(HOME=NULL,
   if(is.null(PROJ$SHARED)){
     PROJ$SHARED_TODAY <- NULL
   } else {
-    PROJ$SHARED_TODAY <- file.path(PROJ$SHARED,lubridate::today())
+    PROJ$SHARED_TODAY <- file.path(PROJ$SHARED, lubridate::today())
   }
 
   if(!CONFIG$ALLOW_FILE_MANIPULATION_FROM_INITIALISE_PROJECT){
     warning("You need to run 'org::AllowFileManipulationFromInitialiseProject()' for this function to create today's folder (org::PROJ$SHARED_TODAY)")
   } else {
-    for(i in names(PROJ)){
-      if(!is.null(PROJ[[i]])) if(!dir.exists(PROJ[[i]])) dir.create(PROJ[[i]], recursive=TRUE)
+    for (i in names(PROJ)) {
+      if (!is.null(PROJ[[i]])) if (!dir.exists(PROJ[[i]])) dir.create(PROJ[[i]], recursive = TRUE)
     }
 
     # Delete empty folders in shared folder
-    if(!is.null(PROJ$SHARED)) for(f in list.files(PROJ$SHARED)){
-      if(stringr::str_detect(f,"[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]")) if(f==lubridate::today()) next # don't want to delete today's folder
-      f2 <- file.path(PROJ$SHARED,f)
-      if(file.exists(f2) && !dir.exists(f2)) next # dont delete files
-      if(length(list.files(f2))==0){
-        unlink(f2, recursive = T)
+    if (!is.null(PROJ$SHARED)) {
+      for (f in list.files(PROJ$SHARED)) {
+        if (stringr::str_detect(f, "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]")) if (f == lubridate::today()) next # don't want to delete today's folder
+        f2 <- file.path(PROJ$SHARED, f)
+        if (file.exists(f2) && !dir.exists(f2)) next # dont delete files
+        if (length(list.files(f2)) == 0) {
+          unlink(f2, recursive = T)
+        }
       }
     }
 
-    if(!is.null(PROJ$HOME)) if(!dir.exists(file.path(PROJ$HOME,"code"))) dir.create(file.path(PROJ$HOME,"code"))
+    if (!is.null(PROJ$HOME)) if (!dir.exists(file.path(PROJ$HOME, "code"))) dir.create(file.path(PROJ$HOME, "code"))
   }
 
-  if(!is.null(PROJ$HOME)){
+  if (!is.null(PROJ$HOME)) {
     setwd(PROJ$HOME)
 
-    fileSources = file.path("code",list.files("code",pattern="*.[rR]$"))
-    sapply(fileSources,source,.GlobalEnv)
+    fileSources <- file.path("code", list.files("code", pattern = "*.[rR]$"))
+    sapply(fileSources, source, .GlobalEnv)
   }
 }

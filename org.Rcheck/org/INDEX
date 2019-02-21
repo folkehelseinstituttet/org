@@ -1,0 +1,6 @@
+AllowFileManipulationFromInitialiseProject
+                        Allows for InitialiseProject to manipulate
+                        files on your system
+CONFIG                  CONFIG
+InitialiseProject       Initialises project
+PROJ                    PROJ

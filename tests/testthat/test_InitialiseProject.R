@@ -3,12 +3,12 @@ context("InitialiseProject")
 test_that("Create org::PROJ$SHARED_TODAY", {
   AllowFileManipulationFromInitialiseProject()
   InitialiseProject(
-    HOME=tempdir(),
-    SHARED=tempdir(),
-    RAW=tempdir()
+    HOME = tempdir(),
+    SHARED = tempdir(),
+    RAW = tempdir()
   )
 
-  expect_equal(TRUE,dir.exists(org::PROJ$SHARED_TODAY))
+  expect_equal(TRUE, dir.exists(org::PROJ$SHARED_TODAY))
 })
 
 test_that("Error due to multiple non-existed folders", {
@@ -33,4 +33,3 @@ test_that("Works due to multiple non-existed folders", {
 
   expect_equal(TRUE,dir.exists(org::PROJ$SHARED_TODAY))
 })
-
