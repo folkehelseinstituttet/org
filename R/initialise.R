@@ -1,3 +1,20 @@
+SelectFolderThatExists <- function(folders, name){
+  retval <- NA
+  for(i in folders){
+    if(dir.exists(i)){
+      retval <- i
+      break
+    }
+  }
+
+  # if multiple folders are provided, then they *must* exist
+  if(is.na(retval) & length(folders)>1){
+    stop(sprintf("Multiple folders provided to %s, but none exist", name))
+  } else if(is.na(retval) & length(folders)==1) retval <- folders
+
+  return(retval)
+}
+
 #' Allows for InitialiseProject to manipulate files
 #' on your system
 #' @export AllowFileManipulationFromInitialiseProject
@@ -17,15 +34,21 @@ InitialiseProject <- function(HOME=NULL,
   PROJ$HOME <- HOME
   PROJ$SHARED <- SHARED
 
+  arguments <- list(...)
+  for(i in seq_along(arguments)){
+    PROJ[[names(arguments)[i]]] <- arguments[[i]]
+  }
+
+  # If multiple files were provided, then select the folder that exists
+  for(i in names(PROJ)){
+    if(!is.null(PROJ[[i]])) PROJ[[i]] <- SelectFolderThatExists(PROJ[[i]], i)
+  }
+
+  # Add SHARED_TODAY to PROJ
   if(is.null(PROJ$SHARED)){
     PROJ$SHARED_TODAY <- NULL
   } else {
     PROJ$SHARED_TODAY <- file.path(PROJ$SHARED,lubridate::today())
-  }
-
-  arguments <- list(...)
-  for(i in seq_along(arguments)){
-    PROJ[[names(arguments)[i]]] <- arguments[[i]]
   }
 
   if(!CONFIG$ALLOW_FILE_MANIPULATION_FROM_INITIALISE_PROJECT){
