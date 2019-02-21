@@ -106,7 +106,7 @@ dropbox
                     |           |            +-- figure1.png
                     |           |            +-- figure2.png
 
-# code goes here:
+# data goes here:
 data
   +-- analyses
              +-- 2018
