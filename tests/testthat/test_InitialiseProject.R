@@ -16,7 +16,7 @@ test_that("Error due to multiple non-existed folders", {
 
   testthat::expect_error(
     InitialiseProject(
-      HOME = c("/x", "/y"),
+      HOME = c("dfsdfoij323423", "sdfd232323"),
       SHARED = tempdir(),
       RAW = tempdir()
     )
@@ -27,7 +27,7 @@ test_that("Error due to multiple non-existed folders", {
 test_that("Works due to multiple non-existed folders", {
   AllowFileManipulationFromInitialiseProject()
   InitialiseProject(
-    HOME = c(tempdir(), "/y"),
+    HOME = c(tempdir(), "sdfd232323"),
     SHARED = tempdir(),
     RAW = tempdir()
   )
