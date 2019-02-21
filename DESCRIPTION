@@ -10,7 +10,7 @@ LazyData: true
 Imports:
   stringr,
   lubridate
-Suggests: testthat, rms,
+Suggests: testthat,
     knitr,
     rmarkdown
 Additional_repositories: https://raubreywhite.github.io/drat/

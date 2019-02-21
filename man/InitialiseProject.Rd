@@ -13,9 +13,6 @@ InitialiseProject(HOME = NULL, SHARED = NULL, ...)
 
 \item{...}{Other folders that you would like to reference}
 }
-\value{
-org::PROJ
-}
 \description{
 `org::InitialiseProject` takes in 2+ arguments.
 It then saves its results (i.e. folder locations) in `org::PROJ`,
@@ -36,5 +33,7 @@ org::InitialiseProject(
   SHARED = "/dropbox/analyses_results/2019/analysis3/"
   RAW = "/data/analyses/2019/analysis3/"
 )
+org::PROJ$SHARED_TODAY
+org::PROJ$RAW
 }
 }
