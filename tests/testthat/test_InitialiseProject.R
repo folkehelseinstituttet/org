@@ -1,14 +1,13 @@
 context("InitialiseProject")
 
-test_that("recoding numeric", {
+test_that("Create org::PROJ$SHARED_TODAY", {
   AllowFileManipulationFromInitialiseProject()
-  InitialiseProject <- InitialiseProject(HOME=tempdir(),
-                                RAW=tempdir(),
-                                CLEAN=tempdir(),
-                                BAKED=tempdir(),
-                                FINAL=tempdir(),
-                                SHARED=tempdir())
+  InitialiseProject(
+    HOME=tempdir(),
+    SHARED=tempdir(),
+    RAW=tempdir()
+  )
 
-  expect_equal("data","data")
+  expect_equal(TRUE,dir.exists(org::PROJ$SHARED_TODAY))
 })
 

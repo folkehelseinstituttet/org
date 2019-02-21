@@ -1,4 +1,5 @@
 .travis.yml
+travis/
 project.Rproj
 ^.*\.Rproj$
 ^\.Rproj\.user$

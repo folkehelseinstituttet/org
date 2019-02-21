@@ -4,32 +4,14 @@
 \alias{InitialiseProject}
 \title{Initialises project}
 \usage{
-InitialiseProject(HOME = NULL, RAW = NULL, CLEAN = NULL, BAKED = NULL,
-  FINAL = NULL, SHARED = NULL, RCLONE_RAW = NULL, RCLONE_CLEAN = NULL,
-  RCLONE_BAKED = NULL, RCLONE_FINAL = NULL, RCLONE_SHARED = NULL)
+InitialiseProject(HOME = NULL, SHARED = NULL, ...)
 }
 \arguments{
 \item{HOME}{a}
 
-\item{RAW}{a}
-
-\item{CLEAN}{a}
-
-\item{BAKED}{a}
-
-\item{FINAL}{a}
-
 \item{SHARED}{a}
 
-\item{RCLONE_RAW}{a}
-
-\item{RCLONE_CLEAN}{a}
-
-\item{RCLONE_BAKED}{a}
-
-\item{RCLONE_FINAL}{a}
-
-\item{RCLONE_SHARED}{a}
+\item{...}{a}
 }
 \description{
 Initialises project
