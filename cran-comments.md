@@ -4,6 +4,20 @@
 * win-builder (devel and release)
 
 ## R CMD check results
-There were no ERRORs, WARNINGs, or NOTEs. 
+
+0 errors | 0 warnings
+
+Notes: 
+
+* checking CRAN incoming feasibility ... NOTE
+Maintainer: 'Richard White <w@rwhite.no>'
+
+New submission
+
+Availability using Additional_repositories specification:
+  ?   ?   https://raubreywhite.github.io/drat/
 
 
+## Downstream dependencies
+
+none
