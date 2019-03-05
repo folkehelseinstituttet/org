@@ -40,7 +40,7 @@ AllowFileManipulationFromInitialiseProject <- function() {
 #' org::AllowFileManipulationFromInitialiseProject()
 #' org::InitialiseProject(
 #'   HOME = "/git/analyses/2019/analysis3/",
-#'   SHARED = "/dropbox/analyses_results/2019/analysis3/"
+#'   SHARED = "/dropbox/analyses_results/2019/analysis3/",
 #'   RAW = "/data/analyses/2019/analysis3/"
 #' )
 #' org::PROJ$SHARED_TODAY
@@ -52,6 +52,8 @@ InitialiseProject <- function(HOME = NULL,
                               ...) {
   PROJ$HOME <- HOME
   PROJ$SHARED <- SHARED
+
+  today <- format.Date(Sys.time(),"%Y-%m-%d")
 
   arguments <- list(...)
   for (i in seq_along(arguments)) {
@@ -67,7 +69,7 @@ InitialiseProject <- function(HOME = NULL,
   if (is.null(PROJ$SHARED)) {
     PROJ$SHARED_TODAY <- NULL
   } else {
-    PROJ$SHARED_TODAY <- file.path(PROJ$SHARED, lubridate::today())
+    PROJ$SHARED_TODAY <- file.path(PROJ$SHARED, today)
   }
 
   if (!CONFIG$ALLOW_FILE_MANIPULATION_FROM_INITIALISE_PROJECT) {
@@ -80,7 +82,7 @@ InitialiseProject <- function(HOME = NULL,
     # Delete empty folders in shared folder
     if (!is.null(PROJ$SHARED)) {
       for (f in list.files(PROJ$SHARED)) {
-        if (stringr::str_detect(f, "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]")) if (f == lubridate::today()) next # don't want to delete today's folder
+        if (grepl("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]", f)) if (f == today) next # don't want to delete today's folder
         f2 <- file.path(PROJ$SHARED, f)
         if (file.exists(f2) && !dir.exists(f2)) next # dont delete files
         if (length(list.files(f2)) == 0) {

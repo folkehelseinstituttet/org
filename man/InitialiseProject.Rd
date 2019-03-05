@@ -30,7 +30,7 @@ For more details see the help vignette:
 org::AllowFileManipulationFromInitialiseProject()
 org::InitialiseProject(
   HOME = "/git/analyses/2019/analysis3/",
-  SHARED = "/dropbox/analyses_results/2019/analysis3/"
+  SHARED = "/dropbox/analyses_results/2019/analysis3/",
   RAW = "/data/analyses/2019/analysis3/"
 )
 org::PROJ$SHARED_TODAY
