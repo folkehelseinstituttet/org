@@ -34,3 +34,32 @@ test_that("Works due to multiple non-existed folders", {
 
   expect_equal(TRUE, dir.exists(org::PROJ$SHARED_TODAY))
 })
+
+test_that("Sources multiple code folders that do exist", {
+  AllowFileManipulationFromInitialiseProject()
+
+  dir.create(file.path(tempdir(),"x1"))
+  dir.create(file.path(tempdir(),"y1"))
+
+  testthat::expect_message(
+    InitialiseProject(
+      HOME = tempdir(),
+      RAW = tempdir(),
+      folders_to_be_sourced = c("x2","y2")
+    ),
+    "*Sourcing all code inside*"
+  )
+})
+
+test_that("Sources multiple code folders that dont exist", {
+  AllowFileManipulationFromInitialiseProject()
+
+  testthat::expect_warning(
+    InitialiseProject(
+      HOME = tempdir(),
+      RAW = tempdir(),
+      folders_to_be_sourced = c("x2","y2")
+    ),
+    "*Creating it now."
+  )
+})

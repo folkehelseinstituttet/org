@@ -4,12 +4,17 @@
 \alias{InitialiseProject}
 \title{Initialises project}
 \usage{
-InitialiseProject(HOME = NULL, SHARED = NULL, ...)
+InitialiseProject(HOME = NULL, SHARED = NULL,
+  folders_to_be_sourced = "code", codes_absolute = FALSE, ...)
 }
 \arguments{
 \item{HOME}{The folder containing 'Run.R' and 'code/'}
 
 \item{SHARED}{A folder inside `SHARED` with today's date will be created and it will be accessible via `org::PROJ$SHARED_TODAY` (this is where you will store all of your results)}
+
+\item{folders_to_be_sourced}{The names of folders that live inside `HOME` and all .r and .R files inside it will be sourced into the global environment.}
+
+\item{codes_absolute}{If `TRUE` then `folders_to_be_sourced` is an absolute folder reference. If `FALSE` then `folders_to_be_sourced` is relative and inside `HOME`.}
 
 \item{...}{Other folders that you would like to reference}
 }

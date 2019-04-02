@@ -1,3 +1,9 @@
+strip_trailing_forwardslash <- function(x){
+  if(is.null(x)) return(NULL)
+  retval <- sub("/$","",x)
+  return(retval)
+}
+
 SelectFolderThatExists <- function(folders, name) {
   retval <- NA
   for (i in folders) {
@@ -35,9 +41,10 @@ AllowFileManipulationFromInitialiseProject <- function() {
 #' \code{vignette("intro", package = "org")}
 #' @param HOME The folder containing 'Run.R' and 'code/'
 #' @param SHARED A folder inside `SHARED` with today's date will be created and it will be accessible via `org::PROJ$SHARED_TODAY` (this is where you will store all of your results)
+#' @param folders_to_be_sourced The names of folders that live inside `HOME` and all .r and .R files inside it will be sourced into the global environment.
+#' @param codes_absolute If `TRUE` then `folders_to_be_sourced` is an absolute folder reference. If `FALSE` then `folders_to_be_sourced` is relative and inside `HOME`.
 #' @param ... Other folders that you would like to reference
-#' @examples
-#' \dontrun{
+#' @examples \dontrun{
 #' org::AllowFileManipulationFromInitialiseProject()
 #' org::InitialiseProject(
 #'   HOME = "/git/analyses/2019/analysis3/",
@@ -50,16 +57,18 @@ AllowFileManipulationFromInitialiseProject <- function() {
 #' @export
 InitialiseProject <- function(HOME = NULL,
                               SHARED = NULL,
-                              codes = "code",
+                              folders_to_be_sourced = "code",
+                              codes_absolute = FALSE,
                               ...) {
-  PROJ$HOME <- HOME
-  PROJ$SHARED <- SHARED
+
+  PROJ$HOME <- strip_trailing_forwardslash(HOME)
+  PROJ$SHARED <- strip_trailing_forwardslash(SHARED)
 
   today <- format.Date(Sys.time(), "%Y-%m-%d")
 
   arguments <- list(...)
   for (i in seq_along(arguments)) {
-    PROJ[[names(arguments)[i]]] <- arguments[[i]]
+    PROJ[[names(arguments)[i]]] <- strip_trailing_forwardslash(arguments[[i]])
   }
 
   # If multiple files were provided, then select the folder that exists
@@ -92,14 +101,29 @@ InitialiseProject <- function(HOME = NULL,
         }
       }
     }
-
-    if (!is.null(PROJ$HOME)) if (!dir.exists(file.path(PROJ$HOME, "code"))) dir.create(file.path(PROJ$HOME, "code"))
   }
 
   if (!is.null(PROJ$HOME)) {
     setwd(PROJ$HOME)
 
-    fileSources <- file.path("code", list.files("code", pattern = "*.[rR]$"))
-    sapply(fileSources, source, .GlobalEnv)
+    for(i in folders_to_be_sourced){
+      if(codes_absolute){
+        folder <- i
+      } else {
+        folder <- file.path(PROJ$HOME,i)
+      }
+      if(!dir.exists(folder)){
+        if(CONFIG$ALLOW_FILE_MANIPULATION_FROM_INITIALISE_PROJECT){
+          warning(paste0("Folder ",folder," does not exist. Creating it now."))
+          dir.create(folder)
+        } else {
+          warning(paste0("Folder ",folder," does not exist."))
+        }
+      } else {
+        message(paste0("Sourcing all code inside ",folder," into .GlobalEnv"))
+        fileSources <- file.path(i, list.files(i, pattern = "*.[rR]$"))
+        sapply(fileSources, source, .GlobalEnv)
+      }
+    }
   }
 }
