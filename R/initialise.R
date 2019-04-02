@@ -6,9 +6,11 @@ strip_trailing_forwardslash <- function(x){
 
 SelectFolderThatExists <- function(folders, name) {
   retval <- NA
-  for (i in folders) {
-    if (dir.exists(i)) {
-      retval <- i
+  id <- NA
+  for (i in seq_along(folders)) {
+    if (dir.exists(folders[i])) {
+      retval <- folders[i]
+      id <- i
       break
     }
   }
@@ -16,9 +18,15 @@ SelectFolderThatExists <- function(folders, name) {
   # if multiple folders are provided, then they *must* exist
   if (is.na(retval) & length(folders) > 1) {
     stop(sprintf("Multiple folders provided to %s, but none exist", name))
-  } else if (is.na(retval) & length(folders) == 1) retval <- folders
+  } else if (is.na(retval) & length(folders) == 1){
+    retval <- folders
+    id <- 1
+  }
 
-  return(retval)
+  return(list(
+    folder=retval,
+    id=id
+  ))
 }
 
 #' Allows for InitialiseProject to create folders and
@@ -73,7 +81,13 @@ InitialiseProject <- function(HOME = NULL,
 
   # If multiple files were provided, then select the folder that exists
   for (i in names(PROJ)) {
-    if (!is.null(PROJ[[i]])) PROJ[[i]] <- SelectFolderThatExists(PROJ[[i]], i)
+    if(i=="computer_id") next
+    if (!is.null(PROJ[[i]])){
+      if(i=="HOME"){
+        PROJ[["computer_id"]] <- SelectFolderThatExists(PROJ[[i]], i)[["id"]]
+      }
+      PROJ[[i]] <- SelectFolderThatExists(PROJ[[i]], i)[["folder"]]
+    }
   }
 
   # Add SHARED_TODAY to PROJ
@@ -87,7 +101,10 @@ InitialiseProject <- function(HOME = NULL,
     warning("You need to run 'org::AllowFileManipulationFromInitialiseProject()' for this function to create today's folder (org::PROJ$SHARED_TODAY)")
   } else {
     for (i in names(PROJ)) {
-      if (!is.null(PROJ[[i]])) if (!dir.exists(PROJ[[i]])) dir.create(PROJ[[i]], recursive = TRUE)
+      if(i=="computer_id") next
+      if (!is.null(PROJ[[i]])){
+        if (!dir.exists(PROJ[[i]])) dir.create(PROJ[[i]], recursive = TRUE)
+      }
     }
 
     # Delete empty folders in shared folder

@@ -35,6 +35,18 @@ test_that("Works due to multiple non-existed folders", {
   testthat::expect_equal(TRUE, dir.exists(org::PROJ$SHARED_TODAY))
 })
 
+
+test_that("computer_id identifying correct order", {
+  AllowFileManipulationFromInitialiseProject()
+  InitialiseProject(
+    HOME = c("sdfd232323",tempdir()),
+    SHARED = tempdir(),
+    RAW = tempdir()
+  )
+
+  testthat::expect_equal(2, PROJ$computer_id)
+})
+
 test_that("Sources multiple code folders that do exist", {
   AllowFileManipulationFromInitialiseProject()
 
