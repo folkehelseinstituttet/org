@@ -8,7 +8,7 @@ test_that("Create org::PROJ$SHARED_TODAY", {
     RAW = tempdir()
   )
 
-  expect_equal(TRUE, dir.exists(org::PROJ$SHARED_TODAY))
+  testthat::expect_equal(TRUE, dir.exists(org::PROJ$SHARED_TODAY))
 })
 
 test_that("Error due to multiple non-existed folders", {
@@ -32,7 +32,7 @@ test_that("Works due to multiple non-existed folders", {
     RAW = tempdir()
   )
 
-  expect_equal(TRUE, dir.exists(org::PROJ$SHARED_TODAY))
+  testthat::expect_equal(TRUE, dir.exists(org::PROJ$SHARED_TODAY))
 })
 
 test_that("Sources multiple code folders that do exist", {
@@ -45,7 +45,7 @@ test_that("Sources multiple code folders that do exist", {
     InitialiseProject(
       HOME = tempdir(),
       RAW = tempdir(),
-      folders_to_be_sourced = c("x2","y2")
+      folders_to_be_sourced = c("x1","y1")
     ),
     "*Sourcing all code inside*"
   )
