@@ -39,7 +39,7 @@ test_that("Works due to multiple non-existed folders", {
 test_that("computer_id identifying correct order", {
   AllowFileManipulationFromInitialiseProject()
   InitialiseProject(
-    HOME = c("sdfd232323",tempdir()),
+    HOME = c("sdfd232323", tempdir()),
     SHARED = tempdir(),
     RAW = tempdir()
   )
@@ -50,14 +50,14 @@ test_that("computer_id identifying correct order", {
 test_that("Sources multiple code folders that do exist", {
   AllowFileManipulationFromInitialiseProject()
 
-  dir.create(file.path(tempdir(),"x1"))
-  dir.create(file.path(tempdir(),"y1"))
+  dir.create(file.path(tempdir(), "x1"))
+  dir.create(file.path(tempdir(), "y1"))
 
   testthat::expect_message(
     InitialiseProject(
       HOME = tempdir(),
       RAW = tempdir(),
-      folders_to_be_sourced = c("x1","y1")
+      folders_to_be_sourced = c("x1", "y1")
     ),
     "*Sourcing all code inside*"
   )
@@ -70,7 +70,7 @@ test_that("Sources multiple code folders that dont exist", {
     InitialiseProject(
       HOME = tempdir(),
       RAW = tempdir(),
-      folders_to_be_sourced = c("x2","y2")
+      folders_to_be_sourced = c("x2", "y2")
     ),
     "*Creating it now."
   )
