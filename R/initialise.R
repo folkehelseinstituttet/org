@@ -49,6 +49,7 @@ AllowFileManipulationFromInitialiseProject <- function() {
 #' @export
 InitialiseProject <- function(HOME = NULL,
                               SHARED = NULL,
+                              codes = "code",
                               ...) {
   PROJ$HOME <- HOME
   PROJ$SHARED <- SHARED
