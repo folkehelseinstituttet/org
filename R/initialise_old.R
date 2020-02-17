@@ -1,5 +1,7 @@
 strip_trailing_forwardslash <- function(x) {
-  if (is.null(x)) return(NULL)
+  if (is.null(x)) {
+    return(NULL)
+  }
   retval <- sub("/$", "", x)
   return(retval)
 }
@@ -34,7 +36,7 @@ SelectFolderThatExists <- function(folders, name) {
 #' @export
 set_shared <- function(SHARED) {
   .Deprecated("initialize")
-  if(is.null(PROJ[["computer_id"]])) stop("not initialized")
+  if (is.null(PROJ[["computer_id"]])) stop("not initialized")
   PROJ$SHARED <- SHARED[PROJ[["computer_id"]]]
 
   today <- format.Date(Sys.time(), "%Y-%m-%d")
@@ -157,7 +159,7 @@ InitialiseProject <- function(HOME = NULL,
         message(paste0("Sourcing all code inside ", folder, " into .GlobalEnv"))
         fileSources <- file.path(folder, list.files(folder, pattern = "*.[rR]$"))
 
-        if(CONFIG$rstudio){
+        if (CONFIG$rstudio) {
           # rstudio
           print(fileSources)
           sapply(fileSources, debugSource)

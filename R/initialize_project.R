@@ -1,5 +1,7 @@
 strip_trailing_forwardslash <- function(x) {
-  if (is.null(x)) return(NULL)
+  if (is.null(x)) {
+    return(NULL)
+  }
   retval <- sub("/$", "", x)
   return(retval)
 }
@@ -33,7 +35,7 @@ SelectFolderThatExists <- function(folders, name) {
 #' @param results A folder inside `results` with today's date will be created and it will be accessible via `org::project$results_today` (this is where you will store all of your results)
 #' @export
 set_results <- function(results) {
-  if(is.null(project[["computer_id"]])) stop("not initialized")
+  if (is.null(project[["computer_id"]])) stop("not initialized")
   project$results <- results[project[["computer_id"]]]
 
   today <- format.Date(Sys.time(), "%Y-%m-%d")
@@ -58,7 +60,7 @@ set_results <- function(results) {
     # Delete empty folders in results folder
     if (!is.null(project$results)) {
       for (f in list.files(project$results)) {
-        if (grepl("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]", f)){
+        if (grepl("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]", f)) {
           if (f == today) next # don't want to delete today's folder
           f2 <- file.path(project$results, f)
           if (file.exists(f2) && !dir.exists(f2)) next # dont delete files
@@ -108,17 +110,16 @@ AllowFileManipulationFromInitialiseProject <- function() {
 #' }
 #' @export
 initialize_project <- function(
-  home = NULL,
-  results = NULL,
-  folders_to_be_sourced = "code",
-  codes_absolute = FALSE,
-  create_folders = FALSE,
-  silent = FALSE,
-  ...
-  ) {
-  if(create_folders){
+                               home = NULL,
+                               results = NULL,
+                               folders_to_be_sourced = "code",
+                               codes_absolute = FALSE,
+                               create_folders = FALSE,
+                               silent = FALSE,
+                               ...) {
+  if (create_folders) {
     AllowFileManipulationFromInitialiseProject()
-  } else if(!silent) {
+  } else if (!silent) {
     message("It is recommended to run with 'create_folders'=TRUE.\nThis message can be turned off with silent=TRUE")
   }
 
@@ -166,7 +167,7 @@ initialize_project <- function(
         message(paste0("Sourcing all code inside ", folder, " into .GlobalEnv"))
         fileSources <- file.path(folder, list.files(folder, pattern = "*.[rR]$"))
 
-        if(CONFIG$rstudio){
+        if (CONFIG$rstudio) {
           # rstudio
           print(fileSources)
           sapply(fileSources, debugSource)

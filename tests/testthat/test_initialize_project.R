@@ -64,7 +64,7 @@ test_that("Sources multiple code folders that do exist", {
 })
 
 test_that("Sources multiple code folders that dont exist", {
-  unlink(tempdir(), recursive = TRUE, force=TRUE)
+  unlink(tempdir(), recursive = TRUE, force = TRUE)
   dir.create(tempdir())
   testthat::expect_warning(
     initialize_project(
