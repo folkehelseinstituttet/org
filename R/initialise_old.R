@@ -29,10 +29,52 @@ SelectFolderThatExists <- function(folders, name) {
   ))
 }
 
+#' Set SHARED folder after initialization
+#' @param SHARED A folder inside `SHARED` with today's date will be created and it will be accessible via `org::PROJ$SHARED_TODAY` (this is where you will store all of your results)
+#' @export
+set_shared <- function(SHARED) {
+  .Deprecated("initialize")
+  if(is.null(PROJ[["computer_id"]])) stop("not initialized")
+  PROJ$SHARED <- SHARED[PROJ[["computer_id"]]]
+
+  today <- format.Date(Sys.time(), "%Y-%m-%d")
+
+  # Add SHARED_TODAY to PROJ
+  if (is.null(PROJ$SHARED)) {
+    PROJ$SHARED_TODAY <- NULL
+  } else {
+    PROJ$SHARED_TODAY <- file.path(PROJ$SHARED, today)
+  }
+
+  if (!CONFIG$ALLOW_FILE_MANIPULATION_FROM_INITIALISE_PROJECT) {
+    warning("You need to run 'org::AllowFileManipulationFromInitialiseProject()' for this function to create today's folder (org::PROJ$SHARED_TODAY)")
+  } else {
+    for (i in names(PROJ)) {
+      if (i == "computer_id") next
+      if (!is.null(PROJ[[i]])) {
+        if (!dir.exists(PROJ[[i]])) dir.create(PROJ[[i]], recursive = TRUE)
+      }
+    }
+
+    # Delete empty folders in shared folder
+    if (!is.null(PROJ$SHARED)) {
+      for (f in list.files(PROJ$SHARED)) {
+        if (grepl("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]", f)) if (f == today) next # don't want to delete today's folder
+        f2 <- file.path(PROJ$SHARED, f)
+        if (file.exists(f2) && !dir.exists(f2)) next # dont delete files
+        if (length(list.files(f2)) == 0) {
+          unlink(f2, recursive = T)
+        }
+      }
+    }
+  }
+}
+
 #' Allows for InitialiseProject to create folders and
 #' delete empty folders on your computer
 #' @export AllowFileManipulationFromInitialiseProject
 AllowFileManipulationFromInitialiseProject <- function() {
+  .Deprecated("initialize")
   CONFIG$ALLOW_FILE_MANIPULATION_FROM_INITIALISE_PROJECT <- TRUE
 }
 
@@ -69,6 +111,8 @@ InitialiseProject <- function(HOME = NULL,
                               folders_to_be_sourced = "code",
                               codes_absolute = FALSE,
                               ...) {
+  .Deprecated("initialize")
+
   PROJ$HOME <- strip_trailing_forwardslash(HOME)
   PROJ$SHARED <- strip_trailing_forwardslash(SHARED)
 
@@ -91,34 +135,7 @@ InitialiseProject <- function(HOME = NULL,
   }
 
   # Add SHARED_TODAY to PROJ
-  if (is.null(PROJ$SHARED)) {
-    PROJ$SHARED_TODAY <- NULL
-  } else {
-    PROJ$SHARED_TODAY <- file.path(PROJ$SHARED, today)
-  }
-
-  if (!CONFIG$ALLOW_FILE_MANIPULATION_FROM_INITIALISE_PROJECT) {
-    warning("You need to run 'org::AllowFileManipulationFromInitialiseProject()' for this function to create today's folder (org::PROJ$SHARED_TODAY)")
-  } else {
-    for (i in names(PROJ)) {
-      if (i == "computer_id") next
-      if (!is.null(PROJ[[i]])) {
-        if (!dir.exists(PROJ[[i]])) dir.create(PROJ[[i]], recursive = TRUE)
-      }
-    }
-
-    # Delete empty folders in shared folder
-    if (!is.null(PROJ$SHARED)) {
-      for (f in list.files(PROJ$SHARED)) {
-        if (grepl("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]", f)) if (f == today) next # don't want to delete today's folder
-        f2 <- file.path(PROJ$SHARED, f)
-        if (file.exists(f2) && !dir.exists(f2)) next # dont delete files
-        if (length(list.files(f2)) == 0) {
-          unlink(f2, recursive = T)
-        }
-      }
-    }
-  }
+  set_shared(SHARED = SHARED)
 
   if (!is.null(PROJ$HOME)) {
     setwd(PROJ$HOME)
@@ -138,8 +155,15 @@ InitialiseProject <- function(HOME = NULL,
         }
       } else {
         message(paste0("Sourcing all code inside ", folder, " into .GlobalEnv"))
-        fileSources <- file.path(i, list.files(i, pattern = "*.[rR]$"))
-        sapply(fileSources, source, .GlobalEnv)
+        fileSources <- file.path(folder, list.files(folder, pattern = "*.[rR]$"))
+
+        if(CONFIG$rstudio){
+          # rstudio
+          print(fileSources)
+          sapply(fileSources, debugSource)
+        } else {
+          sapply(fileSources, source, .GlobalEnv)
+        }
       }
     }
   }

@@ -1,6 +1,10 @@
-#' Folders to be used/referenced
+#' Folders to be used/referenced (depreciated)
 #' @export PROJ
 PROJ <- new.env(parent = emptyenv())
+
+#' Folders to be used/referenced
+#' @export project
+project <- new.env()
 
 #' Config
 CONFIG <- new.env(parent = emptyenv())
