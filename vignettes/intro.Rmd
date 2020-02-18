@@ -48,7 +48,7 @@ Data should:
 
 `org::initialize_project` takes in 2+ arguments. It then saves its results (i.e. folder locations) in `org::project`, which you will use in all of your subsequent code.
 
-`home` is the location of `Run.R` and the `code/` folder. It will be accessible via `org::project$home` (but you will rarely need this).
+`home` is the location of `Run.R` and the `R/` folder. It will be accessible via `org::project$home` (but you will rarely need this).
 
 `results` is your results folder. It will create a folder inside `results` with today's date and it will be accessible via `org::project$results_today` (this is where you will store all of your results). Because the folder's name is today's date, this means that it automatically archives one copy of results per day. This allows you and your collaborators to easily check and see how the results have changed over time.
 
@@ -64,13 +64,13 @@ Data should:
 
 You will not have any other masterfiles, as this creates confusion when you need to return to your code 2 years later.
 
-All sections of code (e.g. data cleaning, analyses for table 1, analyses for table 2, result generation for table 1, sensitivity analysis 1, etc) will be encapsulated in functions that live in the `code` folder.
+All sections of code (e.g. data cleaning, analyses for table 1, analyses for table 2, result generation for table 1, sensitivity analysis 1, etc) will be encapsulated in functions that live in the `R` folder.
 
 An example `Run.R` might look like this:
 
 ```
 # Define the following 'special' locations:
-# 'home' (i.e. Run.R and code/ folder)
+# 'home' (i.e. Run.R and R/ folder)
 # 'results' (i.e. A folder with today's date will be created here)
 
 # Define any other locations you want:
@@ -117,9 +117,9 @@ figure_1(d)
 figure_2(d)
 ```
 
-### code/
+### R/
 
-All of your functions should be defined in `org::project$home/code`. The function `org::initialize_project` automatically sources all of the R scripts in `org::project$home/code`, making them available for use.
+All of your functions should be defined in `org::project$home/R`. The function `org::initialize_project` automatically sources all of the R scripts in `org::project$home/R`, making them available for use.
 
 ## Solutions
 
@@ -136,14 +136,14 @@ git
              +-- 2018
              |      +-- analysis1 <- org::project$home
              |      |           +-- Run.R
-             |      |           +-- code
+             |      |           +-- R
              |      |                  +-- CleanData.R
              |      |                  +-- Descriptives.R
              |      |                  +-- Analysis1.R
              |      |                  +-- Graphs1.R
              |      +-- analysis2 <- org::project$home
              |                  +-- Run.R
-             |                  +-- code
+             |                  +-- R
              |                         +-- CleanData.R
              |                         +-- Descriptives.R
              |                         +-- Analysis1.R
@@ -151,7 +151,7 @@ git
              +-- 2019
                     +-- analysis3 <- org::project$home
                                 +-- Run.R
-                                +-- code
+                                +-- R
                                        +-- CleanData.R
                                        +-- Descriptives.R
                                        +-- Analysis1.R
@@ -234,7 +234,7 @@ If you only have one folder on a shared network drive, without access to github 
 # code goes here:
 project_name <- org::project$home
   +-- Run.R
-  +-- code
+  +-- R
   |      +-- CleanData.R
   |      +-- Descriptives.R
   |      +-- Analysis1.R
@@ -269,7 +269,7 @@ If you only have one folder on a shared network drive, without access to github 
 # code goes here:
 project_name <- org::project$home
   +-- Run.R
-  +-- code
+  +-- R
   |      +-- CleanData.R
   |      +-- Descriptives.R
   |      +-- Analysis1.R

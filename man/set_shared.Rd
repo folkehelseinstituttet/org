@@ -2,7 +2,7 @@
 % Please edit documentation in R/initialise_old.R
 \name{set_shared}
 \alias{set_shared}
-\title{Set SHARED folder after initialization}
+\title{Set SHARED folder after initialization (depreciated)}
 \usage{
 set_shared(SHARED)
 }
@@ -10,5 +10,5 @@ set_shared(SHARED)
 \item{SHARED}{A folder inside `SHARED` with today's date will be created and it will be accessible via `org::PROJ$SHARED_TODAY` (this is where you will store all of your results)}
 }
 \description{
-Set SHARED folder after initialization
+Set SHARED folder after initialization (depreciated)
 }

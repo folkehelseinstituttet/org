@@ -5,17 +5,17 @@
 \title{Initializes project}
 \usage{
 initialize_project(home = NULL, results = NULL,
-  folders_to_be_sourced = "code", codes_absolute = FALSE,
+  folders_to_be_sourced = "R", source_folders_absolute = FALSE,
   create_folders = FALSE, silent = FALSE, ...)
 }
 \arguments{
-\item{home}{The folder containing 'Run.R' and 'code/'}
+\item{home}{The folder containing 'Run.R' and 'R/'}
 
 \item{results}{A folder inside `results` with today's date will be created and it will be accessible via `org::project$results_today` (this is where you will store all of your results)}
 
 \item{folders_to_be_sourced}{The names of folders that live inside `home` and all .r and .R files inside it will be sourced into the global environment.}
 
-\item{codes_absolute}{If `TRUE` then `folders_to_be_sourced` is an absolute folder reference. If `FALSE` then `folders_to_be_sourced` is relative and inside `home`.}
+\item{source_folders_absolute}{If `TRUE` then `folders_to_be_sourced` is an absolute folder reference. If `FALSE` then `folders_to_be_sourced` is relative and inside `home`.}
 
 \item{create_folders}{Recommended that this is set to `TRUE`. It allows `org` to create any folders that are missing.}
 

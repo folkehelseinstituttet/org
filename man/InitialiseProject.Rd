@@ -2,7 +2,7 @@
 % Please edit documentation in R/initialise_old.R
 \name{InitialiseProject}
 \alias{InitialiseProject}
-\title{Initialises project}
+\title{Initialises project (depreciated)}
 \usage{
 InitialiseProject(HOME = NULL, SHARED = NULL,
   folders_to_be_sourced = "code", codes_absolute = FALSE, ...)

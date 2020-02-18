@@ -74,9 +74,10 @@ set_results <- function(results) {
 }
 
 #' Allows for InitialiseProject to create folders and
-#' delete empty folders on your computer
+#' delete empty folders on your computer (depreciated)
 #' @export AllowFileManipulationFromInitialiseProject
 AllowFileManipulationFromInitialiseProject <- function() {
+  .Deprecated("initialize")
   CONFIG$ALLOW_FILE_MANIPULATION_FROM_INITIALISE_PROJECT <- TRUE
 }
 
@@ -91,10 +92,10 @@ AllowFileManipulationFromInitialiseProject <- function() {
 #'
 #' For more details see the help vignette:
 #' \code{vignette("intro", package = "org")}
-#' @param home The folder containing 'Run.R' and 'code/'
+#' @param home The folder containing 'Run.R' and 'R/'
 #' @param results A folder inside `results` with today's date will be created and it will be accessible via `org::project$results_today` (this is where you will store all of your results)
 #' @param folders_to_be_sourced The names of folders that live inside `home` and all .r and .R files inside it will be sourced into the global environment.
-#' @param codes_absolute If `TRUE` then `folders_to_be_sourced` is an absolute folder reference. If `FALSE` then `folders_to_be_sourced` is relative and inside `home`.
+#' @param source_folders_absolute If `TRUE` then `folders_to_be_sourced` is an absolute folder reference. If `FALSE` then `folders_to_be_sourced` is relative and inside `home`.
 #' @param create_folders Recommended that this is set to `TRUE`. It allows `org` to create any folders that are missing.
 #' @param silent Silence all feedback
 #' @param ... Other folders that you would like to reference
@@ -112,8 +113,8 @@ AllowFileManipulationFromInitialiseProject <- function() {
 initialize_project <- function(
                                home = NULL,
                                results = NULL,
-                               folders_to_be_sourced = "code",
-                               codes_absolute = FALSE,
+                               folders_to_be_sourced = "R",
+                               source_folders_absolute = FALSE,
                                create_folders = FALSE,
                                silent = FALSE,
                                ...) {
@@ -151,7 +152,7 @@ initialize_project <- function(
     setwd(project$home)
 
     for (i in folders_to_be_sourced) {
-      if (codes_absolute) {
+      if (source_folders_absolute) {
         folder <- i
       } else {
         folder <- file.path(project$home, i)

@@ -1,37 +1,4 @@
-strip_trailing_forwardslash <- function(x) {
-  if (is.null(x)) {
-    return(NULL)
-  }
-  retval <- sub("/$", "", x)
-  return(retval)
-}
-
-SelectFolderThatExists <- function(folders, name) {
-  retval <- NA
-  id <- NA
-  for (i in seq_along(folders)) {
-    if (dir.exists(folders[i])) {
-      retval <- folders[i]
-      id <- i
-      break
-    }
-  }
-
-  # if multiple folders are provided, then they *must* exist
-  if (is.na(retval) & length(folders) > 1) {
-    stop(sprintf("Multiple folders provided to %s, but none exist", name))
-  } else if (is.na(retval) & length(folders) == 1) {
-    retval <- folders
-    id <- 1
-  }
-
-  return(list(
-    folder = retval,
-    id = id
-  ))
-}
-
-#' Set SHARED folder after initialization
+#' Set SHARED folder after initialization (depreciated)
 #' @param SHARED A folder inside `SHARED` with today's date will be created and it will be accessible via `org::PROJ$SHARED_TODAY` (this is where you will store all of your results)
 #' @export
 set_shared <- function(SHARED) {
@@ -72,15 +39,7 @@ set_shared <- function(SHARED) {
   }
 }
 
-#' Allows for InitialiseProject to create folders and
-#' delete empty folders on your computer
-#' @export AllowFileManipulationFromInitialiseProject
-AllowFileManipulationFromInitialiseProject <- function() {
-  .Deprecated("initialize")
-  CONFIG$ALLOW_FILE_MANIPULATION_FROM_INITIALISE_PROJECT <- TRUE
-}
-
-#' Initialises project
+#' Initialises project (depreciated)
 #'
 #' `org::InitialiseProject` takes in 2+ arguments.
 #' It then saves its results (i.e. folder locations) in `org::PROJ`,
