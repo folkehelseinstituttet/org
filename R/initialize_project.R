@@ -73,11 +73,9 @@ set_results <- function(results) {
   }
 }
 
-#' Allows for InitialiseProject to create folders and
-#' delete empty folders on your computer (depreciated)
-#' @export AllowFileManipulationFromInitialiseProject
-AllowFileManipulationFromInitialiseProject <- function() {
-  .Deprecated("initialize")
+# Allows for InitialiseProject to create folders and
+# delete empty folders on your computer (depreciated)
+allow_file_manip <- function() {
   CONFIG$ALLOW_FILE_MANIPULATION_FROM_INITIALISE_PROJECT <- TRUE
 }
 
@@ -119,7 +117,7 @@ initialize_project <- function(
                                silent = FALSE,
                                ...) {
   if (create_folders) {
-    AllowFileManipulationFromInitialiseProject()
+    allow_file_manip()
   } else if (!silent) {
     message("It is recommended to run with 'create_folders'=TRUE.\nThis message can be turned off with silent=TRUE")
   }

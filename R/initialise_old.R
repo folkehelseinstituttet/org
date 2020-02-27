@@ -39,6 +39,15 @@ set_shared <- function(SHARED) {
   }
 }
 
+
+#' Allows for InitialiseProject to create folders and
+#' delete empty folders on your computer (depreciated)
+#' @export AllowFileManipulationFromInitialiseProject
+AllowFileManipulationFromInitialiseProject <- function() {
+  .Deprecated("initialize")
+  CONFIG$ALLOW_FILE_MANIPULATION_FROM_INITIALISE_PROJECT <- TRUE
+}
+
 #' Initialises project (depreciated)
 #'
 #' `org::InitialiseProject` takes in 2+ arguments.
