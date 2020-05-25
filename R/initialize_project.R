@@ -5,10 +5,10 @@ strip_trailing_forwardslash <- function(x, encode_from, encode_to) {
   retval <- sub("/$", "", x)
 
   if (requireNamespace("glue", quietly = TRUE)) {
-    for(i in seq_along(retval)) retval[i] <- glue::glue(retval[i], .envir = parent.frame(n=1))
+    for (i in seq_along(retval)) retval[i] <- glue::glue(retval[i], .envir = parent.frame(n = 1))
   }
-  if(.Platform$OS.type=="windows"){
-    retval <- iconv(retval,from=encode_from,to=encode_to)
+  if (.Platform$OS.type == "windows") {
+    retval <- iconv(retval, from = encode_from, to = encode_to)
   }
   return(retval)
 }
