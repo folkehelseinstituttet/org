@@ -4,8 +4,15 @@
 \alias{InitialiseProject}
 \title{Initialises project (depreciated)}
 \usage{
-InitialiseProject(HOME = NULL, SHARED = NULL,
-  folders_to_be_sourced = "code", codes_absolute = FALSE, ...)
+InitialiseProject(
+  HOME = NULL,
+  SHARED = NULL,
+  folders_to_be_sourced = "code",
+  codes_absolute = FALSE,
+  encode_from = "UTF-8",
+  encode_to = "latin1",
+  ...
+)
 }
 \arguments{
 \item{HOME}{The folder containing 'Run.R' and 'code/'}
@@ -15,6 +22,10 @@ InitialiseProject(HOME = NULL, SHARED = NULL,
 \item{folders_to_be_sourced}{The names of folders that live inside `HOME` and all .r and .R files inside it will be sourced into the global environment.}
 
 \item{codes_absolute}{If `TRUE` then `folders_to_be_sourced` is an absolute folder reference. If `FALSE` then `folders_to_be_sourced` is relative and inside `HOME`.}
+
+\item{encode_from}{Folders current encoding (only used on Windows)}
+
+\item{encode_to}{Folders final encoding (only used on Windows)}
 
 \item{...}{Other folders that you would like to reference}
 }

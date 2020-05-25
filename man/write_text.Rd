@@ -4,8 +4,12 @@
 \alias{write_text}
 \title{Write text to a file}
 \usage{
-write_text(txt, file = "",
-  header = "**THIS FILE IS CONSTANTLY OVERWRITTEN -- DO NOT MANUALLY EDIT**\\r\\n\\r\\n")
+write_text(
+  txt,
+  file = "",
+ 
+    header = "**THIS FILE IS CONSTANTLY OVERWRITTEN -- DO NOT MANUALLY EDIT**\\r\\n\\r\\n"
+)
 }
 \arguments{
 \item{txt}{Text to be written}

@@ -63,6 +63,8 @@ AllowFileManipulationFromInitialiseProject <- function() {
 #' @param SHARED A folder inside `SHARED` with today's date will be created and it will be accessible via `org::PROJ$SHARED_TODAY` (this is where you will store all of your results)
 #' @param folders_to_be_sourced The names of folders that live inside `HOME` and all .r and .R files inside it will be sourced into the global environment.
 #' @param codes_absolute If `TRUE` then `folders_to_be_sourced` is an absolute folder reference. If `FALSE` then `folders_to_be_sourced` is relative and inside `HOME`.
+#' @param encode_from Folders current encoding (only used on Windows)
+#' @param encode_to Folders final encoding (only used on Windows)
 #' @param ... Other folders that you would like to reference
 #' @examples
 #' \dontrun{
@@ -80,17 +82,19 @@ InitialiseProject <- function(HOME = NULL,
                               SHARED = NULL,
                               folders_to_be_sourced = "code",
                               codes_absolute = FALSE,
+                              encode_from = "UTF-8",
+                              encode_to = "latin1",
                               ...) {
   .Deprecated("initialize")
 
-  PROJ$HOME <- strip_trailing_forwardslash(HOME)
-  PROJ$SHARED <- strip_trailing_forwardslash(SHARED)
+  PROJ$HOME <- strip_trailing_forwardslash(HOME, encode_from = encode_from, encode_to = encode_to)
+  PROJ$SHARED <- strip_trailing_forwardslash(SHARED, encode_from = encode_from, encode_to = encode_to)
 
   today <- format.Date(Sys.time(), "%Y-%m-%d")
 
   arguments <- list(...)
   for (i in seq_along(arguments)) {
-    PROJ[[names(arguments)[i]]] <- strip_trailing_forwardslash(arguments[[i]])
+    PROJ[[names(arguments)[i]]] <- strip_trailing_forwardslash(arguments[[i]], encode_from = encode_from, encode_to = encode_to)
   }
 
   # If multiple files were provided, then select the folder that exists

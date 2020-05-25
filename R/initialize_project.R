@@ -1,8 +1,15 @@
-strip_trailing_forwardslash <- function(x) {
+strip_trailing_forwardslash <- function(x, encode_from, encode_to) {
   if (is.null(x)) {
     return(NULL)
   }
   retval <- sub("/$", "", x)
+
+  if (requireNamespace("glue", quietly = TRUE)) {
+    for(i in seq_along(retval)) retval[i] <- glue::glue(retval[i], .envir = parent.frame(n=1))
+  }
+  if(.Platform$OS.type=="windows"){
+    retval <- iconv(retval,from=encode_from,to=encode_to)
+  }
   return(retval)
 }
 
@@ -96,6 +103,8 @@ allow_file_manip <- function() {
 #' @param source_folders_absolute If `TRUE` then `folders_to_be_sourced` is an absolute folder reference. If `FALSE` then `folders_to_be_sourced` is relative and inside `home`.
 #' @param create_folders Recommended that this is set to `TRUE`. It allows `org` to create any folders that are missing.
 #' @param silent Silence all feedback
+#' @param encode_from Folders current encoding (only used on Windows)
+#' @param encode_to Folders final encoding (only used on Windows)
 #' @param ... Other folders that you would like to reference
 #' @examples
 #' \dontrun{
@@ -115,6 +124,8 @@ initialize_project <- function(
                                source_folders_absolute = FALSE,
                                create_folders = FALSE,
                                silent = FALSE,
+                               encode_from = "UTF-8",
+                               encode_to = "latin1",
                                ...) {
   if (create_folders) {
     allow_file_manip()
@@ -122,14 +133,14 @@ initialize_project <- function(
     message("It is recommended to run with 'create_folders'=TRUE.\nThis message can be turned off with silent=TRUE")
   }
 
-  project$home <- strip_trailing_forwardslash(home)
-  project$results <- strip_trailing_forwardslash(results)
+  project$home <- strip_trailing_forwardslash(home, encode_from = encode_from, encode_to = encode_to)
+  project$results <- strip_trailing_forwardslash(results, encode_from = encode_from, encode_to = encode_to)
 
   today <- format.Date(Sys.time(), "%Y-%m-%d")
 
   arguments <- list(...)
   for (i in seq_along(arguments)) {
-    project[[names(arguments)[i]]] <- strip_trailing_forwardslash(arguments[[i]])
+    project[[names(arguments)[i]]] <- strip_trailing_forwardslash(arguments[[i]], encode_from = encode_from, encode_to = encode_to)
   }
 
   # If multiple files were provided, then select the folder that exists

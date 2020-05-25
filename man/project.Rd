@@ -4,7 +4,9 @@
 \name{project}
 \alias{project}
 \title{Folders to be used/referenced}
-\format{An object of class \code{environment} of length 0.}
+\format{
+An object of class \code{environment} of length 0.
+}
 \usage{
 project
 }

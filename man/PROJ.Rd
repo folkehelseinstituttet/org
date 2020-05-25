@@ -4,7 +4,9 @@
 \name{PROJ}
 \alias{PROJ}
 \title{Folders to be used/referenced (depreciated)}
-\format{An object of class \code{environment} of length 0.}
+\format{
+An object of class \code{environment} of length 0.
+}
 \usage{
 PROJ
 }

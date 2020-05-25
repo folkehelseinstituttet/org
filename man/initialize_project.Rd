@@ -4,9 +4,17 @@
 \alias{initialize_project}
 \title{Initializes project}
 \usage{
-initialize_project(home = NULL, results = NULL,
-  folders_to_be_sourced = "R", source_folders_absolute = FALSE,
-  create_folders = FALSE, silent = FALSE, ...)
+initialize_project(
+  home = NULL,
+  results = NULL,
+  folders_to_be_sourced = "R",
+  source_folders_absolute = FALSE,
+  create_folders = FALSE,
+  silent = FALSE,
+  encode_from = "UTF-8",
+  encode_to = "latin1",
+  ...
+)
 }
 \arguments{
 \item{home}{The folder containing 'Run.R' and 'R/'}
@@ -20,6 +28,10 @@ initialize_project(home = NULL, results = NULL,
 \item{create_folders}{Recommended that this is set to `TRUE`. It allows `org` to create any folders that are missing.}
 
 \item{silent}{Silence all feedback}
+
+\item{encode_from}{Folders current encoding (only used on Windows)}
+
+\item{encode_to}{Folders final encoding (only used on Windows)}
 
 \item{...}{Other folders that you would like to reference}
 }
